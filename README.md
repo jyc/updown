@@ -25,15 +25,16 @@ Type into the second terminal:
 
 In the first, you should see:
 
-    [*] Hi there!
+    Hi there!
 
 If you then type:
 
     Hello world!
 
-You will see the first line replaced by:
+You will see:
 
-    [*] Hello world!
+    Hi there!
+    Hello world!
 
 If you then type:
 
@@ -41,10 +42,16 @@ If you then type:
 
 You will now see:
 
-    [*] Hi there!
+    Hi there!
+    Hello world!
     [STATUS] What's up?
 
-# To Do
+Finally, type:
 
-- Configurable default prefix
-- Configurable colors
+    [STATUS] The sky.
+
+You should now see:
+
+    Hi there!
+    Hello world!
+    [STATUS] The sky.
