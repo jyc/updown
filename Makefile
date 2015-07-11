@@ -3,7 +3,7 @@
 all: updown
 
 updown: updown.scm
-	csc updown.scm -o updown
+	csc -O3 updown.scm -o updown
 
 clean:
-	rm updown.scm
+	rm updown
