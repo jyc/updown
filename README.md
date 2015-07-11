@@ -4,7 +4,7 @@ Proof-of-concept script. Someone has probably done this already.
 Collects standard output of a child process and buffers it into different lines
 on the screen based on a prefix format.
 
-# Depdenencies
+# Dependencies
 
 - CHICKEN Scheme (`pacman -S chicken`, `apt-get install chicken`, `brew install chicken`...)
 
