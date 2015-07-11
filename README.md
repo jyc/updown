@@ -7,6 +7,7 @@ on the screen based on a prefix format.
 # Dependencies
 
 - CHICKEN Scheme (`pacman -S chicken`, `apt-get install chicken`, `brew install chicken`...)
+- args egg (`chicken-install -s args`)
 
 # Example
 
