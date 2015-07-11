@@ -13,7 +13,7 @@ on the screen based on a prefix format.
 
 In one terminal:
 
-    ./updown nc -l 8080
+    ./updown -- nc -l 8080
 
 In a second terminal:
 
