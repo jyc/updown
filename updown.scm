@@ -90,8 +90,13 @@
       (print "Sources at https://bitbucket.org/jyc/updown.")
       (exit 1))))
 
+(args:width 30)
+
 (receive (options operands)
   (args:parse (command-line-arguments) opts)
+
+  (if (null? operands)
+    (usage))
 
   (define command (car operands))
   (define arguments (cdr operands))
