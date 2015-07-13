@@ -59,7 +59,7 @@
   (list (args:make-option (x exclude)         #:optional
                           "Exclude a prefix from collection (output it raw).")
         (args:make-option (r reset-length)    #:optional
-                          "The number of lines at which to reset collection.")
+                          "The number of lines after which to reset collection.")
         (args:make-option (i input)           #!optional
                           (string-append
                             "The regex for parsing input lines. Uses CHICKEN's "
@@ -130,10 +130,13 @@
         (lambda (sig)
           (process-signal pid signal/int)))
 
+      (define (maybe-forget!)
+        (when (= (count-lines) reset-n)
+          (set! prefixes (make-hash-table))
+          (forget-lines)))
+
       (let loop ()
-        (flush-output)
         (define line (read-line in))
-        (flush-output)
         (if (eof-object? line)
           (exit 0))
         (let* ((m (irregex-match input-rgx line)) 
@@ -144,12 +147,12 @@
               (update-line (hash-table-ref prefixes prefix)
                            (format-line prefix rest line))
               (begin
-                (when (= (count-lines) reset-n)
-                  (set! prefixes (make-hash-table))
-                  (forget-lines))
+                (maybe-forget!)
                 (let ((m (push-line (format-line prefix rest line))))
                   (hash-table-set! prefixes prefix m))))
-            (push-line (format-line prefix rest line))))
+            (begin
+              (maybe-forget!)
+              (push-line (format-line prefix rest line)))))
         (flush-output)
         (loop))))
 
